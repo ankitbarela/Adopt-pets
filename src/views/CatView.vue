@@ -1,18 +1,28 @@
 <template>
   <div class="cat">
-    <b-table striped hover :items="cats"></b-table>
+    <h1>Cats for Adoption</h1>
+    <b-table striped hover :items="cats">
+      <template slot="name" slot-scope="data">
+        <router-link :to="`/pets/${data.value}`">
+          {{ data.value }}
+        </router-link>
+      </template>
+    </b-table>
   </div>
 </template>
 
 <script>
-import cats from '@/data/cats.js'
+import { mapState } from 'vuex'
 
 export default {
   name: 'CatView',
   data () {
-    return {
-      cats
-    }
+    return {}
+  },
+  computed: {
+    ...mapState([
+      'cats'
+    ])
   }
 }
 </script>
