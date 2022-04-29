@@ -1,16 +1,18 @@
 <template>
   <div class="cat">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <h1>this is cats</h1>
+    <b-table striped hover :items="cats"></b-table>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
+import cats from '@/data/cats.js'
 
 export default {
   name: 'CatView',
-  components: {
+  data () {
+    return {
+      cats
+    }
   }
 }
 </script>
