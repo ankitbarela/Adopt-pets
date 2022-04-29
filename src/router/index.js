@@ -19,7 +19,7 @@ const routes = [
     component: DogView
   },
   {
-    path: '/pets/:id',
+    path: '/pets/:species/:id',
     name: 'pet',
     component: PetView
   },

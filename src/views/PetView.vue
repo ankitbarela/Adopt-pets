@@ -1,16 +1,30 @@
 <template>
-  <div class="Pet">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <h1>this is pet</h1>
+   <div>
+    <h1>{{ animal.name }} ({{ $route.params.species }})</h1>
+    <p>Age: {{ animal.age }} years old</p>
+    <p>Breed: {{ animal.breed }}</p>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
+import { mapState } from 'vuex'
 
 export default {
   name: 'PetView',
-  components: {
+  data () {
+    return {
+      animal: {}
+    }
+  },
+  computed: {
+    ...mapState([
+      'cats',
+      'dogs'
+    ])
+  },
+  mounted () {
+    const animal = this[this.$route.params.species][this.$route.params.id]
+    this.animal = animal
   }
 }
 </script>
